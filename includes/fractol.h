@@ -7,7 +7,7 @@
 # define WIN_W 800
 # define WIN_H 800
 # define MAX_ZOOM 3000000
-# define INITIAL_LOOP 60
+# define INITIAL_LOOP 125
 
 typedef struct 		s_window
 {
@@ -27,6 +27,9 @@ typedef struct 		s_window
 	double			mouse_zoom;
 	double			offset_x;
 	double			offset_y;
+	t_point			offset;
+	int				fractal_type;
+	t_point		mouse_position;
 }					t_window;
 
 typedef struct 		s_mandelbrot

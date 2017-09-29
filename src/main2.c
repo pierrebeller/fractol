@@ -10,14 +10,18 @@ void		fractal_choice(t_window *env, char *arg)
 		env->fractal_type = 2;
 	else if (ft_strequ(arg, "ship"))
 		env->fractal_type = 3;
+	else 
+		error_usage();
 }
 
 void		proceed(char *arg)
 {
 	t_window *env;
 
-	env = set_env(env);
+	env = set_env();
 	fractal_choice(env, arg);
+	set_new_image(env);
+	ft_set_hook(env);
 }
 
 int		main(int argc, char **argv)
@@ -28,9 +32,3 @@ int		main(int argc, char **argv)
 		error_usage();
 	return (0);
 }
-
-
-x -> fonction_mandel
-y -> fonction_julia
-z -> fonction_ship
-
