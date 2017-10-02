@@ -1,20 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   env_redraw.c                                       :+:      :+:    :+:   */
+/*   points.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pbeller <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/10/01 15:58:57 by pbeller           #+#    #+#             */
-/*   Updated: 2017/10/01 15:58:59 by pbeller          ###   ########.fr       */
+/*   Created: 2017/10/01 16:00:12 by pbeller           #+#    #+#             */
+/*   Updated: 2017/10/01 16:00:13 by pbeller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-void	env_redraw(t_window *env)
+t_point		*ft_point_init(int x, int y)
 {
-	env_process_image(env);
-	env_print_image(env);
-	env->is_rendering = 0;
+	t_point	*pt;
+
+	pt = (t_point *)malloc(sizeof(t_point));
+	pt->x = x;
+	pt->y = y;
+	return (pt);
 }

@@ -1,12 +1,25 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   env_set_hooks.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: pbeller <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/10/01 15:59:05 by pbeller           #+#    #+#             */
+/*   Updated: 2017/10/01 15:59:07 by pbeller          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fractol.h"
 #include "libft.h"
+#include <stdlib.h>
 
 int		loop_hook(void *param)
 {
-	t_env			*env;
+	t_window			*env;
 
-	env = (t_env*)param;
-	if (env->is_rendering = 0)
+	env = (t_window*)param;
+	if (env->is_rendering == 0)
 	{
 		env_redraw(param);
 		env->is_rendering = 1;
@@ -14,16 +27,16 @@ int		loop_hook(void *param)
 	return (0);
 }
 
-int		env_mousemove_hook(int x, int y, t_env *env)
+int		env_mousemove_hook(int x, int y, t_window *env)
 {
 	env->mouse_pos->x = x;
 	env->mouse_pos->y = y;
-	if (env->fract_choice)
+	if (env->fractal_type)
 		env->is_rendering = 0;
 	return (0);
 }
 
-int		mouse_scrolling(int button, int x, int y, t_env *env)
+int		mouse_scrolling(int button, int x, int y, t_window *env)
 {
 	t_dpoint	pos;
 	t_dpoint	tmp;
@@ -42,21 +55,21 @@ int		mouse_scrolling(int button, int x, int y, t_env *env)
 		env->mouse_zoom = 0.1;
 	env->offset.x += (tmp.x - (pos.x / env->mouse_zoom)) * env->mouse_zoom;
 	env->offset.y += (tmp.y - (pos.y / env->mouse_zoom)) * env->mouse_zoom;
-	env->max_iter = env->mouse_zoom + INITIAL_LOOP;
+	env->i_max = env->mouse_zoom + INITIAL_LOOP;
 	return (0);
 }
 
-int		key_hook(int key, t_env *env)
+int		key_hook(int key, t_window *env)
 {
-	if (keycode == 53)
+	if (key == 53)
 		exit(1);
-	if (keycode == 123)
+	if (key == 123)
 		env->offset.x += 0.05;
-	if (keycode == 124)
+	if (key == 124)
 		env->offset.x -= 0.05;
-	if (keycode == 125)
+	if (key == 125)
 		env->offset.y -= 0.05;
-	if (keycode == 126)
+	if (key == 126)
 		env->offset.y += 0.05;
 	return (0);
 }

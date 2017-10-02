@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main2.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: pbeller <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/10/01 15:59:58 by pbeller           #+#    #+#             */
+/*   Updated: 2017/10/01 15:59:59 by pbeller          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fractol.h"
 
 void		fractal_choice(t_window *env, char *arg)
@@ -20,8 +32,9 @@ void		proceed(char *arg)
 
 	env = set_env();
 	fractal_choice(env, arg);
-	set_new_image(env);
-	ft_set_hook(env);
+	//set_new_image(env);
+	ft_set_hooks(env);
+	mlx_loop(env->mlx);
 }
 
 int		main(int argc, char **argv)

@@ -1,20 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   env_redraw.c                                       :+:      :+:    :+:   */
+/*   color.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pbeller <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/10/01 15:58:57 by pbeller           #+#    #+#             */
-/*   Updated: 2017/10/01 15:58:59 by pbeller          ###   ########.fr       */
+/*   Created: 2017/10/02 14:08:08 by pbeller           #+#    #+#             */
+/*   Updated: 2017/10/02 14:08:11 by pbeller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-void	env_redraw(t_window *env)
+int				get_rgb_color(int r, int g, int b)
 {
-	env_process_image(env);
-	env_print_image(env);
-	env->is_rendering = 0;
+	int result;
+
+	result = 0;
+	result += r << 16;
+	result += g << 8;
+	result += b;
+	return (result);
 }

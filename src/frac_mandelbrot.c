@@ -1,26 +1,39 @@
-#include "fractol.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   frac_mandelbrot.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: pbeller <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/10/01 15:59:37 by pbeller           #+#    #+#             */
+/*   Updated: 2017/10/01 15:59:39 by pbeller          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-int		ft_mandelbrot(t_window *env, t_point pt)
+#include "fractol.h"
+#include <stdio.h>
+
+int		ft_mandelbrot(t_window *env, t_point *pt)
 {
 	int color;
 	int i;
-	t_mandelbrot complex;
+	t_complex complex;
 	double tmp;
 	int max;
 
 	max = env->i_max;
-	complex = new_mandel_complex(x, y, env);
+	complex = new_mandel_complex(pt, env->fractal);
 	i = 0;
 	while (1)
 	{
-		tmp = complex.zr;
-		complex.zr = complex.zr * complex.zr - complex.zi * complex.zi + complex.cr;
-		complex.zi = 2 * complex.zi * tmp + complex.ci;
+		tmp = complex.z.r;
+		complex.z.r = complex.z.r * complex.z.r - complex.z.i * complex.z.i + complex.c.r;
+		complex.z.i = 2 * complex.z.i * tmp + complex.c.i;
 		i++;
-		if (((complex.zr * complex.zr + complex.zi * complex.zi) >= 4) || i >= max)
+		if (((complex.z.r * complex.z.r + complex.z.i * complex.z.i) >= 4) || i >= max)
 			break;
 	}
-	color = get_rgb_color(env->x_mouse % 50 * i, env->y_mouse % 150 * i,\
-		(env->x_mouse + env->y_mouse) % 250 * i);
+	color = get_rgb_color(env->mouse_pos->x % 50 * i, env->mouse_pos->y % 150 * i,\
+		(env->mouse_pos->x + env->mouse_pos->y) % 250 * i);
 	return (color);
 }

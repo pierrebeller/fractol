@@ -1,17 +1,46 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   new_complex.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: pbeller <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/10/01 16:00:05 by pbeller           #+#    #+#             */
+/*   Updated: 2017/10/01 16:00:07 by pbeller          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fractol.h"
 #include "libft.h"
 #include <stdlib.h>
 
-t_mandelbrot *new_mandel_complex(t_env *env)
+t_complex new_ship_complex(t_point *pt, t_fractol *fractal)
 {
-	t_fractol *fractal;
+	t_complex	complex;
 
-	fractal = (t_mandelbrot *)malloc(sizeof(t_mandelbrot));
-	fractal->p1 = ft_dpoint_init(-2.1, -1.2);
-	fractal->p2 = ft_dpoint_init(0.6, 1.2);
-	fractal->zoom = ft_dpoint_init(WIN_H / (fractal->p2->x - fractal->p1->x)
-		* env->mouse_zoom, WIN_W / (fractal->p2->y - fractal->p1->y) *
-															env->mouse_zoom);
-	(void)env;
-	return (fractal);
+	complex.c = ft_dcomplex(0.45 + 2 * 1.7 * ((pt->x / fractal->zoom->x\
+		+ fractal->p1->x)), 0.5 + 2 * 1.7 * ((pt->y / fractal->zoom->y +\
+		fractal->p1->y)));
+	complex.z = ft_dcomplex(0, 0);
+	return (complex);
+}
+t_complex new_mandel_complex(t_point *pt, t_fractol *fractal)
+{
+	t_complex	complex;
+
+	complex.c = ft_dcomplex(pt->x / fractal->zoom->x + fractal->p1->x, pt->y /\
+	fractal->zoom->y + fractal->p1->y);
+	complex.z = ft_dcomplex(0, 0);
+	return (complex);
+}
+
+t_complex new_julia_complex(t_window *env, t_point *pt, t_fractol *fractal)
+{
+	t_complex	complex;
+
+	complex.c = ft_dcomplex(0.285 + (double)(env->mouse_pos->x /\
+		(double)WIN_W), 0.01 + (double)(env->mouse_pos->y / (double)WIN_H));
+	complex.z = ft_dcomplex(pt->x / fractal->zoom->x + fractal->p1->x,\
+		pt->y / fractal->zoom->y + fractal->p1->y);
+	return (complex);
 }

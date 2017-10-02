@@ -4,8 +4,24 @@
 
 NAME = Fractol
 
-SRC 	= 		main.c
-				
+SRC = 	main2.c \
+		env_new.c \
+		env_new_image.c \
+		env_process_img.c \
+		env_redraw.c \
+		env_set_hooks.c \
+		error.c \
+		frac_julia.c \
+		frac_mandelbrot.c \
+		frac_ship.c \
+		new_complex.c \
+		expose_hook.c \
+		mandel_new.c \
+		julia_new.c \
+		env_print_img.c \
+		color.c \
+		check.c
+
 OBJ = $(addprefix $(OBJDIR),$(SRC:.c=.o))
 
 CC = gcc
