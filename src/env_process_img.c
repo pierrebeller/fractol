@@ -25,7 +25,9 @@ void		draw_pt(t_point *pt, t_window *env)
 	else if (env->fractal_type == 2)
 		color = ft_julia(env, pt);
 	else if (env->fractal_type == 3)
-		color = ft_ship(env, pt, env->fractal);
+		color = ft_ship(env, pt);
+	else if (env->fractal_type == 4)
+		color = ft_mandelbar(env, pt);
 	pt->x -= env->offset.x;
 	pt->y -= env->offset.y;
 	if (check_x(pt->x) && check_y(pt->y))

@@ -34,7 +34,8 @@ int		ft_julia(t_window *env, t_point *pt)
 																	|| i >= max)
 			break ;
 	}
-	color = get_rgb_color(env->mouse_pos->x % 50 * i, env->mouse_pos->y % 150 * i,\
-		(env->mouse_pos->x + env->mouse_pos->y) % 250 * i);
+	/*color = get_rgb_color(env->mouse_pos->x % 50 * i, env->mouse_pos->y % 150 * i,\
+		(env->mouse_pos->x + env->mouse_pos->y) % 250 * i);*/
+	color = get_normal_color(i);
 	return (color);
 }

@@ -14,13 +14,14 @@ SRC = 	main2.c \
 		frac_julia.c \
 		frac_mandelbrot.c \
 		frac_ship.c \
+		frac_mandelbar.c \
 		new_complex.c \
 		expose_hook.c \
 		mandel_new.c \
 		julia_new.c \
 		env_print_img.c \
 		color.c \
-		check.c
+		check.c \
 
 OBJ = $(addprefix $(OBJDIR),$(SRC:.c=.o))
 

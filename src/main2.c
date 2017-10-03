@@ -22,6 +22,8 @@ void		fractal_choice(t_window *env, char *arg)
 		env->fractal_type = 2;
 	else if (ft_strequ(arg, "ship"))
 		env->fractal_type = 3;
+	else if (ft_strequ(arg, "mandelbar"))
+		env->fractal_type = 4;
 	else 
 		error_usage();
 }

@@ -1,38 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   color.c                                            :+:      :+:    :+:   */
+/*   mandelbar_new.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pbeller <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/10/02 14:08:08 by pbeller           #+#    #+#             */
-/*   Updated: 2017/10/02 14:08:11 by pbeller          ###   ########.fr       */
+/*   Created: 2017/10/03 13:07:37 by pbeller           #+#    #+#             */
+/*   Updated: 2017/10/03 13:07:38 by pbeller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-int				get_rgb_color(int r, int g, int b)
+t_fractol	*mandelbar_new(t_window *env)
 {
-	int result;
+	t_fractol	*fractal;
 
-	result = 0;
-	result += r << 16;
-	result += g << 8;
-	result += b;
-	return (result);
-}
-
-int				get_normal_color(int i)
-{
-	int r;
-	int g;
-	int b;
-	int color;
-
-	r = (255 - i);
-	g = (255 - (i * 10));
-	b = (255 - (i * 2));
-	color = (r << 16) + (g << 8) + b;
-	return (color);
+	fractal = (t_fractol *)malloc(sizeof(t_fractol));
+	if (fractal == NULL)
+		return (NULL);
+	fractal->p1 = ft_dpoint(-2.1, -1.2);
+	fractal->p2 = ft_dpoint(0.6, 1.2);
+	fractal->zoom = ft_dpoint(WIN_H / (fractal->p2->x - fractal->p1->x) * \
+		env->mouse_zoom, WIN_W / (fractal->p2->y - fractal->p1->y) *\
+		env->mouse_zoom);
+	return (fractal);
 }
