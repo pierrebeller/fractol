@@ -13,6 +13,7 @@
 #include "fractol.h"
 #include "libft.h"
 #include <stdlib.h>
+#include <stdio.h>
 
 int		loop_hook(void *param)
 {
@@ -71,6 +72,8 @@ int		key_hook(int key, t_window *env)
 		env->offset.y -= 0.05;
 	if (key == 126)
 		env->offset.y += 0.05;
+	if (key == 35)
+		env->color = (env->color == 1 ? 0 : 1);
 	return (0);
 }
 

@@ -14,11 +14,11 @@
 
 int		ft_mandelbar(t_window *env, t_point *pt)
 {
-	int color;
-	int i;
-	t_complex complex;
-	double tmp;
-	int max;
+	int			color;
+	int			i;
+	t_complex	complex;
+	double		tmp;
+	int			max;
 
 	max = env->i_max;
 	complex = new_mandel_complex(pt, env->fractal);
@@ -26,14 +26,14 @@ int		ft_mandelbar(t_window *env, t_point *pt)
 	while (1)
 	{
 		tmp = complex.z.r;
-		complex.z.r = complex.z.i * complex.z.i - complex.z.r * complex.z.r + complex.c.r;
+		complex.z.r = complex.z.i * complex.z.i - complex.z.r\
+		* complex.z.r + complex.c.r;
 		complex.z.i = 2 * complex.z.i * tmp + complex.c.i;
 		i++;
-		if (((complex.z.r * complex.z.r + complex.z.i * complex.z.i) >= 4) || i >= max)
-			break;
+		if (((complex.z.r * complex.z.r + complex.z.i\
+			* complex.z.i) >= 4) || i >= max)
+			break ;
 	}
-	color = get_rgb_color(env->mouse_pos->x % 50 * i, env->mouse_pos->y % 150 * i,\
-		(env->mouse_pos->x + env->mouse_pos->y) % 250 * i);
-	//color = get_normal_color(i);
+	color = choose_color(i, env);
 	return (color);
 }

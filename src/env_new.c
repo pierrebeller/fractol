@@ -21,8 +21,10 @@ t_window	*set_env(void)
 	env->mlx = mlx_init();
 	env->win = mlx_new_window(env->mlx, WIN_W, WIN_H, "fractol");
 	env->img = mlx_new_image(env->mlx, WIN_W, WIN_H);
-	env->data = mlx_get_data_addr(env->img, &(env->color), &(env->size), &(env->endian));
+	env->data = mlx_get_data_addr(env->img, &(env->color),\
+		&(env->size), &(env->endian));
 	env->zoom = 1;
+	env->color = 0;
 	env->i_max = INITIAL_LOOP;
 	env->is_rendering = 0;
 	env->offset.x = 0;

@@ -15,7 +15,7 @@
 
 int		ft_ship(t_window *env, t_point *pt)
 {
-	t_complex 	complex;
+	t_complex	complex;
 	int			color;
 	double		i;
 	double		max;
@@ -27,14 +27,14 @@ int		ft_ship(t_window *env, t_point *pt)
 	while (1)
 	{
 		tmp = complex.z.r;
-		complex.z.r = complex.z.r * complex.z.r - complex.z.i * complex.z.i + complex.c.r;
+		complex.z.r = complex.z.r * complex.z.r -\
+		complex.z.i * complex.z.i + complex.c.r;
 		complex.z.i = 2 * fabs(tmp * complex.z.i) + complex.c.i;
 		i++;
-		if(((complex.z.r * complex.z.r + complex.z.i * complex.z.i) > 10) || i >= max)
+		if (((complex.z.r * complex.z.r +\
+			complex.z.i * complex.z.i) > 10) || i >= max)
 			break ;
 	}
-	color = get_rgb_color(env->mouse_pos->x % 50 * i, env->mouse_pos->y % 150 * i,\
-		(env->mouse_pos->x + env->mouse_pos->y) % 250 * i);
-	//color = get_normal_color(i);
+	color = choose_color(i, env);
 	return (color);
 }

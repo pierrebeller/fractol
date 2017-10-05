@@ -33,13 +33,14 @@ void		draw_pt(t_point *pt, t_window *env)
 	pt->x -= env->offset.x;
 	pt->y -= env->offset.y;
 	if (check_x(pt->x) && check_y(pt->y))
-		ft_memcpy(&env->data[(pt->x * 4) + (pt->y * env->size)], (const void *)&(color), (size_t)(sizeof(int)));
+		ft_memcpy(&env->data[(pt->x * 4) + (pt->y * env->size)],\
+			(const void *)&(color), (size_t)(sizeof(int)));
 }
 
 void		mlximg_iter(t_window *env)
 {
-	int 	x;
-	int 	y;
+	int		x;
+	int		y;
 	t_point *pt;
 
 	y = 0;
@@ -61,9 +62,9 @@ void		env_process_image(t_window *env)
 {
 	if (env->fractal_type == 1)
 		env->fractal = mandelbrot_new(env);
-	else if (env->fractal_type == 2 || env->fractal_type == 5)
+	else if (env->fractal_type == 2)
 		env->fractal = julia_new(env);
-	else 
+	else
 		env->fractal = mandelbrot_new(env);
 	mlximg_iter(env);
 }

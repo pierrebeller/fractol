@@ -12,6 +12,16 @@
 
 #include "fractol.h"
 
+int				get_psychedelic_color(int i, t_window *env)
+{
+	int		color;
+
+	color = get_rgb_color(env->mouse_pos->x % 50 * i,\
+		env->mouse_pos->y % 150 * i,\
+		(env->mouse_pos->x + env->mouse_pos->y) % 250 * i);
+	return (color);
+}
+
 int				get_rgb_color(int r, int g, int b)
 {
 	int result;
@@ -25,14 +35,22 @@ int				get_rgb_color(int r, int g, int b)
 
 int				get_normal_color(int i)
 {
-	unsigned int r;
-	unsigned int g;
-	unsigned int b;
-	int color;
+	unsigned int	r;
+	unsigned int	g;
+	unsigned int	b;
+	int				color;
 
-	r = (255 - i);
-	g = (255 - (i * 100));
-	b = (255 - (i * 25));
+	r = (125 - i);
+	g = (255 - i);
+	b = (255 - i);
 	color = (r << 16) + (g << 8) + b;
 	return (color);
+}
+
+int				choose_color(int i, t_window *env)
+{
+	if (env->color == 1)
+		return (get_normal_color(i));
+	else
+		return (get_psychedelic_color(i, env));
 }

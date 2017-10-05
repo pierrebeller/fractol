@@ -14,7 +14,7 @@
 #include "libft.h"
 #include <stdlib.h>
 
-t_complex new_ship_complex(t_point *pt, t_fractol *fractal)
+t_complex	new_ship_complex(t_point *pt, t_fractol *fractal)
 {
 	t_complex	complex;
 
@@ -24,7 +24,8 @@ t_complex new_ship_complex(t_point *pt, t_fractol *fractal)
 	complex.z = ft_dcomplex(0, 0);
 	return (complex);
 }
-t_complex new_mandel_complex(t_point *pt, t_fractol *fractal)
+
+t_complex	new_mandel_complex(t_point *pt, t_fractol *fractal)
 {
 	t_complex	complex;
 
@@ -34,7 +35,7 @@ t_complex new_mandel_complex(t_point *pt, t_fractol *fractal)
 	return (complex);
 }
 
-t_complex new_julia_complex(t_window *env, t_point *pt, t_fractol *fractal)
+t_complex	new_julia_complex(t_window *env, t_point *pt, t_fractol *fractal)
 {
 	t_complex	complex;
 
@@ -45,12 +46,12 @@ t_complex new_julia_complex(t_window *env, t_point *pt, t_fractol *fractal)
 	return (complex);
 }
 
-t_complex complex_julia_sin_new(t_window *env, t_point *pt, t_fractol *fractal)
+t_complex	complex_julia_sin_new(t_window *e, t_point *pt, t_fractol *fractal)
 {
 	t_complex	complex;
 
-	complex.c = ft_dcomplex(0.285 + (double)(env->mouse_pos->x /
-		(double)WIN_W), 0.01 + (double)(env->mouse_pos->y / (double)WIN_H));
+	complex.c = ft_dcomplex(0.285 + (double)(e->mouse_pos->x /
+		(double)WIN_W), 0.01 + (double)(e->mouse_pos->y / (double)WIN_H));
 	complex.z = ft_dcomplex(pt->x / fractal->zoom->x + fractal->p1->x,
 		pt->y / fractal->zoom->y + fractal->p1->y);
 	return (complex);

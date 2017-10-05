@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   fractol.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: pbeller <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/10/05 18:34:46 by pbeller           #+#    #+#             */
+/*   Updated: 2017/10/05 18:34:48 by pbeller          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef FRACTOL_H
 # define FRACTOL_H
 
@@ -22,16 +34,16 @@ typedef	struct		s_complex
 	t_dcomplex		c;
 }					t_complex;
 
-typedef struct 		s_window
+typedef struct		s_window
 {
 	void			*mlx;
 	void			*win;
-	char 			*data;
+	char			*data;
 	void			*img;
 	int				size;
 	int				endian;
 	int				color;
-	int 			zoom;
+	int				zoom;
 	int				i_max;
 	double			x_move;
 	double			y_move;
@@ -48,35 +60,38 @@ typedef struct 		s_window
 
 }					t_window;
 
-void		error_usage(void);
-t_window	*set_env(void);
-void		set_new_image(t_window *env);
-void		ft_set_hooks(t_window *env);
-int			expose_hook(t_window *env);
+void				error_usage(void);
+t_window			*set_env(void);
+void				set_new_image(t_window *env);
+void				ft_set_hooks(t_window *env);
+int					expose_hook(t_window *env);
 
-t_fractol	*julia_new(t_window *env);
-t_fractol	*mandelbrot_new(t_window *env);
+t_fractol			*julia_new(t_window *env);
+t_fractol			*mandelbrot_new(t_window *env);
 
-int			ft_ship(t_window *win, t_point *pt);
-int			ft_mandelbrot(t_window *env, t_point *pt);
-int			ft_julia(t_window *env, t_point *pt);
-int			ft_mandelbar(t_window *env, t_point *pt);
-int			ft_julia_sin(t_window *env, t_point *pt);
+int					ft_ship(t_window *win, t_point *pt);
+int					ft_mandelbrot(t_window *env, t_point *pt);
+int					ft_julia(t_window *env, t_point *pt);
+int					ft_mandelbar(t_window *env, t_point *pt);
+int					ft_julia_sin(t_window *env, t_point *pt);
 
+void				env_process_image(t_window *env);
+void				env_print_image(t_window *env);
 
-void		env_process_image(t_window *env);
-void		env_print_image(t_window *env);
+void				env_redraw(t_window *env);
 
-void		env_redraw(t_window *env);
+t_complex			new_julia_complex(t_window *env, t_point *pt,\
+					t_fractol *fractal);
+t_complex			new_mandel_complex(t_point *pt, t_fractol *fractal);
+t_complex			new_ship_complex(t_point *pt, t_fractol *fractal);
+t_complex			complex_julia_sin_new(t_window *env, t_point *pt,\
+					t_fractol *fractal);
 
-t_complex	new_julia_complex(t_window *env, t_point *pt, t_fractol *fractal);
-t_complex 	new_mandel_complex(t_point *pt, t_fractol *fractal);
-t_complex 	new_ship_complex(t_point *pt, t_fractol *fractal);
-t_complex 	complex_julia_sin_new(t_window *env, t_point *pt, t_fractol *fractal);
+int					get_rgb_color(int r, int g, int b);
+int					get_normal_color(int i);
+int					choose_color(int i, t_window *env);
 
-int			get_rgb_color(int r, int g, int b);
-int			get_normal_color(int i);
-int			check_x(int x);
-int			check_y(int y);
-void		ft_quit(t_window *env);
+int					check_x(int x);
+int					check_y(int y);
+void				ft_quit(t_window *env);
 #endif

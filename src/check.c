@@ -31,5 +31,5 @@ void	ft_quit(t_window *env)
 {
 	free(env->mouse_pos);
 	free(env);
-	exit (0);
+	exit(0);
 }

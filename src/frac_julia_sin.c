@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   frac_julia_sin.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: pbeller <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/10/05 19:04:53 by pbeller           #+#    #+#             */
+/*   Updated: 2017/10/05 19:04:54 by pbeller          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <math.h>
 #include "fractol.h"
 
@@ -24,7 +36,6 @@ int		ft_julia_sin(t_window *env, t_point *pt)
 																	|| i >= max)
 			break ;
 	}
-	color = get_rgb_color(env->mouse_pos->x % 50 * i, env->mouse_pos->y %
-					150 * i, (env->mouse_pos->x + env->mouse_pos->y) % 250 * i);
+	color = choose_color(i, env);
 	return (color);
 }
