@@ -61,6 +61,7 @@ int			ft_ship(t_window *win, t_point *pt);
 int			ft_mandelbrot(t_window *env, t_point *pt);
 int			ft_julia(t_window *env, t_point *pt);
 int			ft_mandelbar(t_window *env, t_point *pt);
+int			ft_julia_sin(t_window *env, t_point *pt);
 
 
 void		env_process_image(t_window *env);
@@ -71,9 +72,11 @@ void		env_redraw(t_window *env);
 t_complex	new_julia_complex(t_window *env, t_point *pt, t_fractol *fractal);
 t_complex 	new_mandel_complex(t_point *pt, t_fractol *fractal);
 t_complex 	new_ship_complex(t_point *pt, t_fractol *fractal);
+t_complex 	complex_julia_sin_new(t_window *env, t_point *pt, t_fractol *fractal);
 
 int			get_rgb_color(int r, int g, int b);
 int			get_normal_color(int i);
 int			check_x(int x);
 int			check_y(int y);
+void		ft_quit(t_window *env);
 #endif

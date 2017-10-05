@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "fractol.h"
+#include <stdlib.h>
 
 void		fractal_choice(t_window *env, char *arg)
 {
@@ -24,6 +25,8 @@ void		fractal_choice(t_window *env, char *arg)
 		env->fractal_type = 3;
 	else if (ft_strequ(arg, "mandelbar"))
 		env->fractal_type = 4;
+	else if (ft_strequ(arg, "julia_sin"))
+		env->fractal_type = 5;
 	else 
 		error_usage();
 }
@@ -34,7 +37,6 @@ void		proceed(char *arg)
 
 	env = set_env();
 	fractal_choice(env, arg);
-	//set_new_image(env);
 	ft_set_hooks(env);
 	mlx_loop(env->mlx);
 }

@@ -22,6 +22,7 @@ SRC = 	main2.c \
 		env_print_img.c \
 		color.c \
 		check.c \
+		frac_julia_sin.c \
 
 OBJ = $(addprefix $(OBJDIR),$(SRC:.c=.o))
 

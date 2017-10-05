@@ -44,3 +44,14 @@ t_complex new_julia_complex(t_window *env, t_point *pt, t_fractol *fractal)
 		pt->y / fractal->zoom->y + fractal->p1->y);
 	return (complex);
 }
+
+t_complex complex_julia_sin_new(t_window *env, t_point *pt, t_fractol *fractal)
+{
+	t_complex	complex;
+
+	complex.c = ft_dcomplex(0.285 + (double)(env->mouse_pos->x /
+		(double)WIN_W), 0.01 + (double)(env->mouse_pos->y / (double)WIN_H));
+	complex.z = ft_dcomplex(pt->x / fractal->zoom->x + fractal->p1->x,
+		pt->y / fractal->zoom->y + fractal->p1->y);
+	return (complex);
+}

@@ -62,7 +62,7 @@ int		mouse_scrolling(int button, int x, int y, t_window *env)
 int		key_hook(int key, t_window *env)
 {
 	if (key == 53)
-		exit(1);
+		ft_quit(env);
 	if (key == 123)
 		env->offset.x += 0.05;
 	if (key == 124)

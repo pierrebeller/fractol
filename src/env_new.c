@@ -12,7 +12,6 @@
 
 #include <stdlib.h>
 #include "fractol.h"
-#include <stdio.h>
 
 t_window	*set_env(void)
 {

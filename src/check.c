@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "fractol.h"
+#include <stdlib.h>
 
 int		check_x(int x)
 {
@@ -26,3 +27,9 @@ int		check_y(int y)
 	return (0);
 }
 
+void	ft_quit(t_window *env)
+{
+	free(env->mouse_pos);
+	free(env);
+	exit (0);
+}

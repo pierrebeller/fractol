@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "fractol.h"
-#include <stdio.h>
+#include <stdlib.h>
 
 void		draw_pt(t_point *pt, t_window *env)
 {
@@ -28,6 +28,8 @@ void		draw_pt(t_point *pt, t_window *env)
 		color = ft_ship(env, pt);
 	else if (env->fractal_type == 4)
 		color = ft_mandelbar(env, pt);
+	else if (env->fractal_type == 5)
+		color = ft_julia_sin(env, pt);
 	pt->x -= env->offset.x;
 	pt->y -= env->offset.y;
 	if (check_x(pt->x) && check_y(pt->y))
@@ -48,6 +50,7 @@ void		mlximg_iter(t_window *env)
 		{
 			pt = ft_point(x, y);
 			draw_pt(pt, env);
+			free(pt);
 			x++;
 		}
 		y++;
@@ -58,7 +61,7 @@ void		env_process_image(t_window *env)
 {
 	if (env->fractal_type == 1)
 		env->fractal = mandelbrot_new(env);
-	else if (env->fractal_type == 2)
+	else if (env->fractal_type == 2 || env->fractal_type == 5)
 		env->fractal = julia_new(env);
 	else 
 		env->fractal = mandelbrot_new(env);

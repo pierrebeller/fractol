@@ -25,14 +25,14 @@ int				get_rgb_color(int r, int g, int b)
 
 int				get_normal_color(int i)
 {
-	int r;
-	int g;
-	int b;
+	unsigned int r;
+	unsigned int g;
+	unsigned int b;
 	int color;
 
 	r = (255 - i);
-	g = (255 - (i * 10));
-	b = (255 - (i * 2));
+	g = (255 - (i * 100));
+	b = (255 - (i * 25));
 	color = (r << 16) + (g << 8) + b;
 	return (color);
 }
