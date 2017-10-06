@@ -56,3 +56,13 @@ t_complex	complex_julia_sin_new(t_window *e, t_point *pt, t_fractol *fractal)
 		pt->y / fractal->zoom->y + fractal->p1->y);
 	return (complex);
 }
+
+t_complex	complex_test_new(t_point *pt, t_fractol *fractal)
+{
+	t_complex complex;
+
+	complex.c = ft_dcomplex(pt->x / fractal->zoom->x + fractal->p1->x,\
+		pt->y / fractal->zoom->y + fractal->p1->y);
+	complex.z = ft_dcomplex(pt->x / fractal->zoom->x, pt->y / fractal->zoom->y);
+	return (complex);
+}

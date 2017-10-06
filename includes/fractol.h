@@ -19,7 +19,7 @@
 # define WIN_W 600
 # define WIN_H 600
 # define MAX_ZOOM 3000000
-# define INITIAL_LOOP 50
+# define INITIAL_LOOP 75
 
 typedef struct		s_fractol
 {
@@ -57,6 +57,7 @@ typedef struct		s_window
 	t_point			mouse_zoom_pos;
 	t_point			*mouse_pos;
 	t_fractol		*fractal;
+	t_point			***map;
 
 }					t_window;
 
@@ -74,6 +75,7 @@ int					ft_mandelbrot(t_window *env, t_point *pt);
 int					ft_julia(t_window *env, t_point *pt);
 int					ft_mandelbar(t_window *env, t_point *pt);
 int					ft_julia_sin(t_window *env, t_point *pt);
+int					ft_test(t_window *env, t_point *pt);
 
 void				env_process_image(t_window *env);
 void				env_print_image(t_window *env);
@@ -86,6 +88,7 @@ t_complex			new_mandel_complex(t_point *pt, t_fractol *fractal);
 t_complex			new_ship_complex(t_point *pt, t_fractol *fractal);
 t_complex			complex_julia_sin_new(t_window *env, t_point *pt,\
 					t_fractol *fractal);
+t_complex			complex_test_new(t_point *pt, t_fractol *fractal);
 
 int					get_rgb_color(int r, int g, int b);
 int					get_normal_color(int i);

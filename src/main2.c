@@ -27,6 +27,8 @@ void		fractal_choice(t_window *env, char *arg)
 		env->fractal_type = 4;
 	else if (ft_strequ(arg, "julia_sin"))
 		env->fractal_type = 5;
+	else if (ft_strequ(arg, "test"))
+		env->fractal_type = 6;
 	else
 		error_usage();
 }

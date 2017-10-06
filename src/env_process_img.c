@@ -30,6 +30,8 @@ void		draw_pt(t_point *pt, t_window *env)
 		color = ft_mandelbar(env, pt);
 	else if (env->fractal_type == 5)
 		color = ft_julia_sin(env, pt);
+	else if (env->fractal_type == 6)
+		color = ft_test(env, pt);
 	pt->x -= env->offset.x;
 	pt->y -= env->offset.y;
 	if (check_x(pt->x) && check_y(pt->y))
@@ -41,7 +43,6 @@ void		mlximg_iter(t_window *env)
 {
 	int		x;
 	int		y;
-	t_point *pt;
 
 	y = 0;
 	while (y < WIN_H)
@@ -49,25 +50,32 @@ void		mlximg_iter(t_window *env)
 		x = 0;
 		while (x < WIN_W)
 		{
-			pt = ft_point(x, y);
-			draw_pt(pt, env);
-			free(pt);
+			if (env->map[y][x])
+				draw_pt(env->map[y][x], env);
 			x++;
 		}
 		y++;
 	}
 }
 
+void		new_calcul(t_window *env)
+{
+	env->fractal->zoom->x = WIN_H / (env->fractal->p2->x - env->fractal->p1->x) * env->mouse_zoom;
+	env->fractal->zoom->y = WIN_W / (env->fractal->p2->y - env->fractal->p1->y) * env->mouse_zoom;
+}
+
 void		env_process_image(t_window *env)
 {
-	if (env->fractal_type == 1)
-		env->fractal = mandelbrot_new(env);
-	else if (env->fractal_type == 2)
-		env->fractal = julia_new(env);
+	if (!env->fractal)
+	{
+		if (env->fractal_type == 1)
+			env->fractal = mandelbrot_new(env);
+		else if (env->fractal_type == 2)
+			env->fractal = julia_new(env);
+		else
+			env->fractal = mandelbrot_new(env);
+	}
 	else
-		env->fractal = mandelbrot_new(env);
+		new_calcul(env);
 	mlximg_iter(env);
-	free(env->fractal->p1);
-	free(env->fractal->p2);
-	free(env->fractal->zoom);
 }

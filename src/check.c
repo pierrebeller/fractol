@@ -29,6 +29,8 @@ int		check_y(int y)
 
 void	ft_quit(t_window *env)
 {
+	mlx_destroy_image(env->mlx, env->img);
+	mlx_destroy_window(env->mlx, env->win);
 	free(env->mouse_pos);
 	free(env);
 	exit(0);

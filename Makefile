@@ -23,6 +23,7 @@ SRC = 	main2.c \
 		color.c \
 		check.c \
 		frac_julia_sin.c \
+		frac_test.c
 
 OBJ = $(addprefix $(OBJDIR),$(SRC:.c=.o))
 
