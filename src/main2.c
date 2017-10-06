@@ -39,10 +39,6 @@ void		proceed(char *arg)
 	fractal_choice(env, arg);
 	ft_set_hooks(env);
 	mlx_loop(env->mlx);
-	while (1)
-	{
-		ft_putstr("LOL\n");
-	}
 }
 
 int			main(int argc, char **argv)

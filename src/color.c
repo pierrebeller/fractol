@@ -40,9 +40,9 @@ int				get_normal_color(int i)
 	unsigned int	b;
 	int				color;
 
-	r = (125 - i);
-	g = (255 - i);
-	b = (255 - i);
+	r = 50 * i;
+	g = 0;
+	b = 100 *i;
 	color = (r << 16) + (g << 8) + b;
 	return (color);
 }

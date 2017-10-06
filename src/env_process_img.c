@@ -67,4 +67,7 @@ void		env_process_image(t_window *env)
 	else
 		env->fractal = mandelbrot_new(env);
 	mlximg_iter(env);
+	free(env->fractal->p1);
+	free(env->fractal->p2);
+	free(env->fractal->zoom);
 }

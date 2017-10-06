@@ -24,7 +24,7 @@ t_window	*set_env(void)
 	env->data = mlx_get_data_addr(env->img, &(env->color),\
 		&(env->size), &(env->endian));
 	env->zoom = 1;
-	env->color = 0;
+	env->color = 1;
 	env->i_max = INITIAL_LOOP;
 	env->is_rendering = 0;
 	env->offset.x = 0;

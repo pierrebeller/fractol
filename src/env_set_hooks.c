@@ -65,15 +65,16 @@ int		key_hook(int key, t_window *env)
 	if (key == 53)
 		ft_quit(env);
 	if (key == 123)
-		env->offset.x += 0.05;
+		env->offset.x += 1;
 	if (key == 124)
-		env->offset.x -= 0.05;
+		env->offset.x -= 1;
 	if (key == 125)
-		env->offset.y -= 0.05;
+		env->offset.y -= 1;
 	if (key == 126)
-		env->offset.y += 0.05;
+		env->offset.y += 1;
 	if (key == 35)
 		env->color = (env->color == 1 ? 0 : 1);
+	env->is_rendering = 0;
 	return (0);
 }
 
