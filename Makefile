@@ -2,11 +2,10 @@
 
 .SUFFIXES:
 
-NAME = Fractol
+NAME = fractol
 
-SRC = 	main2.c \
+SRC = 	main.c \
 		env_new.c \
-		env_new_image.c \
 		env_process_img.c \
 		env_redraw.c \
 		env_set_hooks.c \
@@ -23,7 +22,7 @@ SRC = 	main2.c \
 		color.c \
 		check.c \
 		frac_julia_sin.c \
-		frac_test.c
+		frac_test.c \
 
 OBJ = $(addprefix $(OBJDIR),$(SRC:.c=.o))
 

@@ -28,7 +28,8 @@ int		ft_test(t_window *env, t_point *pt)
 	{
 		tmp = complex.z.r;
 		complex.z.r = tmp * tmp * tmp - 3 * tmp * complex.z.i * complex.z.i;
-		complex.z.i = 3 * tmp * tmp * complex.z.r - complex.z.i * complex.z.i * complex.z.i;
+		complex.z.i = 3 * tmp * tmp * complex.z.r - complex.z.i\
+		* complex.z.i * complex.z.i;
 		complex.z.r = exp(complex.z.r) * cos(complex.z.i) + complex.c.r;
 		complex.z.i = exp(complex.z.r) * sin(complex.z.i) + complex.c.i;
 		i++;

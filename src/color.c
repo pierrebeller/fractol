@@ -42,7 +42,7 @@ int				get_normal_color(int i)
 
 	r = 50 * i;
 	g = 0;
-	b = 100 *i;
+	b = 100 * i;
 	color = (r << 16) + (g << 8) + b;
 	return (color);
 }

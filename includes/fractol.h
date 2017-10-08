@@ -18,7 +18,7 @@
 
 # define WIN_W 600
 # define WIN_H 600
-# define MAX_ZOOM 3000000
+# define MAX_ZOOM 5000000
 # define INITIAL_LOOP 75
 
 typedef struct		s_fractol
@@ -45,17 +45,15 @@ typedef struct		s_window
 	int				color;
 	int				zoom;
 	int				i_max;
-	double			x_move;
-	double			y_move;
 	double			mouse_zoom;
-	double			offset_x;
-	double			offset_y;
 	t_point			offset;
 	int				fractal_type;
-	t_point			mouse_position;
 	int				is_rendering;
+	int				block_julia;
 	t_point			mouse_zoom_pos;
 	t_point			*mouse_pos;
+	int				last_mouse_x;
+	int				last_mouse_y;
 	t_fractol		*fractal;
 	t_point			***map;
 
@@ -63,7 +61,6 @@ typedef struct		s_window
 
 void				error_usage(void);
 t_window			*set_env(void);
-void				set_new_image(t_window *env);
 void				ft_set_hooks(t_window *env);
 int					expose_hook(t_window *env);
 

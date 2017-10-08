@@ -15,6 +15,7 @@
 
 void	error_usage(void)
 {
-	ft_putstr("usage: ./fractol [mandelbrot][julia][ship][mandelbar][julia_sin]\n");
+	ft_putstr("usage: ./fractol [mandelbrot][julia][ship][mandelbar]\
+		[julia_sin][test]\n");
 	exit(1);
 }

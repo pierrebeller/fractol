@@ -12,7 +12,6 @@
 
 #include <stdlib.h>
 #include "fractol.h"
-#include <stdio.h>
 
 t_point		**new_line(int y)
 {
@@ -33,7 +32,7 @@ t_point		**new_line(int y)
 t_point		***new_map(void)
 {
 	t_point	***map;
-	int 	y;
+	int		y;
 
 	y = 0;
 	map = (t_point ***)malloc(sizeof(t_point **) * (WIN_H + 1));
@@ -63,6 +62,7 @@ t_window	*set_env(void)
 	env->offset.x = 0;
 	env->offset.y = 0;
 	env->mouse_pos = ft_point(WIN_W / 2, WIN_H / 2);
+	env->block_julia = 0;
 	env->mouse_zoom = 1.0;
 	env->mouse_zoom_pos.x = 0;
 	env->mouse_zoom_pos.y = 0;

@@ -60,17 +60,17 @@ void		mlximg_iter(t_window *env)
 
 void		new_calcul(t_window *env)
 {
-	env->fractal->zoom->x = WIN_H / (env->fractal->p2->x - env->fractal->p1->x) * env->mouse_zoom;
-	env->fractal->zoom->y = WIN_W / (env->fractal->p2->y - env->fractal->p1->y) * env->mouse_zoom;
+	env->fractal->zoom->x = WIN_H / (env->fractal->p2->x -\
+		env->fractal->p1->x) * env->mouse_zoom;
+	env->fractal->zoom->y = WIN_W / (env->fractal->p2->y -\
+		env->fractal->p1->y) * env->mouse_zoom;
 }
 
 void		env_process_image(t_window *env)
 {
 	if (!env->fractal)
 	{
-		if (env->fractal_type == 1)
-			env->fractal = mandelbrot_new(env);
-		else if (env->fractal_type == 2)
+		if (env->fractal_type == 2 || env->fractal_type == 5)
 			env->fractal = julia_new(env);
 		else
 			env->fractal = mandelbrot_new(env);

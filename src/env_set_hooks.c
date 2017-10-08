@@ -74,6 +74,12 @@ int		key_hook(int key, t_window *env)
 		env->offset.y += 1;
 	if (key == 35)
 		env->color = (env->color == 1 ? 0 : 1);
+	if (key == 8)
+	{
+		env->block_julia = (env->block_julia == 1 ? 0 : 1);
+		env->last_mouse_x = env->mouse_pos->x;
+		env->last_mouse_y = env->mouse_pos->y;
+	}
 	env->is_rendering = 0;
 	return (0);
 }
