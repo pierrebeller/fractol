@@ -6,7 +6,7 @@
 /*   By: pbeller <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/01 15:59:58 by pbeller           #+#    #+#             */
-/*   Updated: 2017/10/01 15:59:59 by pbeller          ###   ########.fr       */
+/*   Updated: 2017/10/08 17:35:50 by pbeller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ void		proceed(char *arg)
 	t_window *env;
 
 	env = set_env();
+	ft_putstr("prout");
 	fractal_choice(env, arg);
 	ft_set_hooks(env);
 	mlx_loop(env->mlx);
