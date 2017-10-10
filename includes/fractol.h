@@ -18,7 +18,7 @@
 
 # define WIN_W 600
 # define WIN_H 600
-# define MAX_ZOOM 5000000
+# define MAX_ZOOM 3000000
 # define INITIAL_LOOP 75
 
 typedef struct		s_fractol

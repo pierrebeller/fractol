@@ -33,13 +33,21 @@ void		fractal_choice(t_window *env, char *arg)
 		error_usage();
 }
 
+void		set_fractal(t_window *env)
+{
+	if (env->fractal_type == 2 || env->fractal_type == 5)
+		env->fractal = julia_new(env);
+	else 
+		env->fractal = mandelbrot_new(env);
+}
+
 void		proceed(char *arg)
 {
 	t_window *env;
 
 	env = set_env();
-	ft_putstr("prout");
 	fractal_choice(env, arg);
+	set_fractal(env);
 	ft_set_hooks(env);
 	mlx_loop(env->mlx);
 }

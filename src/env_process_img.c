@@ -68,14 +68,6 @@ void		new_calcul(t_window *env)
 
 void		env_process_image(t_window *env)
 {
-	if (!env->fractal)
-	{
-		if (env->fractal_type == 2 || env->fractal_type == 5)
-			env->fractal = julia_new(env);
-		else
-			env->fractal = mandelbrot_new(env);
-	}
-	else
-		new_calcul(env);
+	new_calcul(env);
 	mlximg_iter(env);
 }
